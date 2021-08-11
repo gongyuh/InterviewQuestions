@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>kuai</title>
+</head>
+
+<body>
+    <script>
+        function quickSort(array) {
+            if (array.length < 2) {
+                return array;
+            }
+            const target = array[0];
+            const left = [];
+            const right = [];
+            for (let i = 1; i < array.length; i++) {
+                if (array[i] < target) {
+                    left.push(array[i]);
+                } else {
+                    right.push(array[i]);
+                }
+            }
+            return quickSort(left).concat([target], quickSort(right));
+        }
+
+        let num = [7, 3, 5, 1, 2, 4];
+        console.log(quickSort(num));
+    </script>
+</body>
+
+</html>

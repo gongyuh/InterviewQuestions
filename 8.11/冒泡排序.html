@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>maopao</title>
+</head>
+
+<body>
+    <script>
+        function bubbleSort(array) {
+            for (let i = 0; i < array.length; i++) {
+                let complete = true
+                for (let j = 0; j < array.length - 1 - i; j++) {
+                    if (array[j] > array[j + 1]) {
+                        [array[j], array[j + 1]] = [array[j + 1], array[j]]
+                        complete = false
+                    }
+                }
+                if (complete) {
+                    break;
+                }
+            }
+            return array
+        }
+
+        let num = [7, 3, 5, 1, 2, 4];
+        console.log(bubbleSort(num));
+    </script>
+</body>
+
+</html>
