@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        Function.prototype.myCall = function (context, ...arg1) {
+            let _this = this
+            return function F(...arg2) {
+                return _this.apply(context, arg1.concat(arg2))
+            }
+        }
+
+        var a = {
+            name: "Cherry",
+            fn: function (a, b) {
+                console.log(this)
+                console.log(a + b)
+            }
+        }
+
+        var b = {
+            name: 'hehe'
+        }
+        a.fn.bind(a, 1, 2)()
+
+    </script>
+</body>
+
+</html>

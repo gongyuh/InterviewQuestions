@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //手写call
+        Function.prototype.myCall = function (context, ...arg) {
+            context = context || window;
+            let fn = Symbol();
+            context[fn] = this;
+            let res = context[fn](...arg);
+            delete context[fn];
+            return res;
+        };
+
+        //手写apply
+        Function.prototype.myApply = function (context, arg) {
+            context = context || window
+            let fn = Symbol()
+            context[fn] = this
+            let res = context[fn](...arg)
+            delete context[fn]
+            return res
+        }
+
+        var a = {
+            name: "Cherry",
+            fn: function (a, b) {
+                console.log(this)
+                console.log(a + b)
+            }
+        }
+
+        var b = {
+            name: 'hehe'
+        }
+
+        //a.fn.myCall(b,1,2)
+        a.fn.myApply(b, [1, 2])
+
+    </script>
+</body>
+
+</html>
