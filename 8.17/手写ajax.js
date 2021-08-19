@@ -29,9 +29,9 @@ const p = new Promise((resolve, reject) => {
   xhr.onreadystatechange = function () {
     if (xhr.readyState === 4) {
       if (xhr.status === 200) {
-        console.log(JSON.parse(xhr.responseText));
-      } else if (xhr.status === 404) {
-        console.log('404 is not found');
+        resolve(JSON.parse(xhr.responseText));
+      } else {
+        reject(xhr.responseText);
       }
     }
   };
