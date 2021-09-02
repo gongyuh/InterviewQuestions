@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /**
+ * 2. 找出数组中第k大和第m大的数字相加之和
+ * 说明：实现一个方法，找出数组中第k大的和第m大的数字相加之和
+ * 示例：
+ *   let arr = [1,2,4,4,3,5], k = 2, m = 4
+ *   findTopSum(arr, k, m); // 第2大的数是4，出现2次，第4大的是2，出现1次，所以结果为10
+ */
+
+        function findTopSum(arr, k, m) {
+            let newArr = [...new Set(arr)].sort((a, b) => b - a)
+            let kNum = newArr[k - 1]
+            let mNum = newArr[m - 1]
+
+            function times(num) {
+                let time = 0
+                arr.forEach(item => {
+                    if (item === num) {
+                        time++
+                    }
+                })
+                return time
+            }
+
+            let kTime = times(kNum)
+            let mTime = times(mNum)
+
+            let res = kTime * kNum + mNum * mTime
+            return res
+
+        }
+
+        let arr = [1, 2, 4, 4, 3, 5], k = 2, m = 4
+        console.log(findTopSum(arr, k, m))
+    </script>
+</body>
+
+</html>

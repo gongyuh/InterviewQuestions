@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let obj1 = {
+            data: [
+                {
+                    news_id: 51182,
+                    title:
+                        "Teslamask's American Business Relations: The government does not pay billions to build factories",
+                    source: "AI Finance",
+                    members: [
+                        {
+                            title: [
+                                {
+                                    news_id: 51184,
+                                    title:
+                                        "iPhone X Review: Innovative future with real black technology",
+                                    source: "Netease phone",
+                                },
+                            ],
+                        },
+                    ],
+                },
+            ],
+        };
+
+        function findMod(objectStr, path, val) {
+            let props = path.split(".");
+            let th = "";
+            for (let i = 0; i < props.length; i++) {
+                th += "['" + props[i] + "']";
+            }
+
+            //判断是对象还是字符串
+            let isObj = new Function("return " + objectStr + th);
+            console.log(isObj)
+            console.log(typeof isObj())
+            let e = new Function();
+            if (typeof isObj() == "object") {
+                e = new Function(objectStr + th + "=" + val);
+            } else if (typeof isObj() == "string") {
+                e = new Function(objectStr + th + '="' + val + '"');
+            }
+            e();
+        }
+        findMod(
+            "obj1",
+            "data.0.members.0.title.0.title",
+            "根据路径修改一个属性值（字符串）"
+        );
+        console.log(obj1);
+        document.write(obj1["data"]["0"]["members"]["0"]["title"]["0"]["title"]);
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function compareVersion(v1, v2) {
+            v1 = v1.split('.')
+            v2 = v2.split('.')
+            let len = Math.max(v1.length, v2.length)
+            for (let i = 0; i < len; i++) {
+                if (v1[i] < v2[i]) {
+                    return 1
+                } else {
+                    return -1
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

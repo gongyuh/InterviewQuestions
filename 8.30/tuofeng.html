@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function test(str) {
+            // write code here
+            str = str.split('-')
+            console.log(str)
+            let len = str.length
+            for (let i = 1; i < len; i++) {
+                let k = str[i].charAt(0)
+                k = k.toUpperCase();
+                str[i] = str[i].replace(str[i].charAt(0), k)
+            }
+            console.log(str)
+            res = ''
+            for (let j = 0; j < len; j++) {
+                res += str[j]
+            }
+            console.log(res)
+            return res
+
+        }
+        test("border-bottom-color")
+    </script>
+</body>
+
+</html>

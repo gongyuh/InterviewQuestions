@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // function multi() {
+        //     // var args = Array.prototype.slice.call(arguments);
+        //     var args = [...arguments]
+        //     console.log(args)
+        //     var fn = function () {
+        //         var newArgs = args.concat(Array.prototype.slice.call(arguments));
+        //         console.log('newArgs', newArgs)
+        //         return multi.apply(this, newArgs);
+        //     }
+        //     fn.toString = function () {
+        //         return args.reduce(function (a, b) {
+        //             return a * b;
+        //         })
+        //     }
+        //     return fn;
+        // }
+
+
+
+        // console.log(multi(1)(2)(3))
+        // console.log(multi(1, 2, 3)(4))
+        // console.log(multi(1)(2)(3)(4)(5))
+
+
+        function currying() {
+            let args = [...arguments]
+            let fn = function (args) {
+                newArg = args.concat(Array.prototype.slice.call(arguments))
+                return currying.call(this, newArg)
+            }
+            fn.toString = function () {
+                return args.reduce(function (a, b) {
+                    return a + b
+                })
+            }
+            return fn
+        }
+
+        console.log(currying(1)(2)(3))
+        console.log(currying(1, 2, 3)(4))
+        console.log(currying(1)(2)(3)(4)(5))
+    </script>
+</body>
+
+</html>
